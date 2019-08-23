@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { execPromise } = require("./utils");
 const { logger } = require("./logger");
 const {
