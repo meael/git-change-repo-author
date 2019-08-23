@@ -1,0 +1,25 @@
+{
+  "name": "git-change-repo-author",
+  "version": "1.0.0",
+  "description": "Change commits author in git repository",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "meael",
+  "license": "ISC",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meael/git-change-repo-author.git"
+  },
+  "keywords": [
+    "change",
+    "repo",
+    "author"
+  ],
+  "bugs": {
+    "url": "https://github.com/meael/git-change-repo-author/issues"
+  },
+  "homepage": "https://github.com/meael/git-change-repo-author#readme"
+}
