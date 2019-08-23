@@ -1,4 +1,4 @@
-# Git Change Repo Author
+# Git Change Repository Author
 
 [![npm version](https://badge.fury.io/js/git-change-repo-author.svg)](https://www.npmjs.com/package/git-change-repo-author)
 
