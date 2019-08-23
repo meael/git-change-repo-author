@@ -4,6 +4,8 @@
 
 Changes specific commits author in repository
 
+![](https://media.giphy.com/media/L3hl1eDCrGlyGUgpGd/giphy.gif)
+
 ## Installation
 
 ```bash
