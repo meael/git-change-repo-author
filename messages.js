@@ -1,6 +1,6 @@
 const showGitConfig = () => `
 NOTE:
-New author info is getted from git settings
+New author info is taken from git settings
 You can pass it manually by --new-name= and --new-email=`;
 
 const showRepositories = repoCount => `
