@@ -14,26 +14,37 @@ npm i -g git-change-repo-author
 
 ## Usage
 
-```bash
-## Simple
-## Rewrite author to your git config author
-## You can pass repository urls as much as you want <repo-url> <repo-url2> <repo-url3> etc..
-git-change-repo-author --email=<example@example.com> --backup <repo-url>
+### Simple
 
-## Advanced
-## Rewrite author to specific author
-git-change-repo-author --email=<example@example.com> --new-email=<example2@example.com> new-name=<username> --backup <repo-url>
+Just pass author email you want to change.
+
+```bash
+git-change-repo-author --backup --email=<example@example.com> <repo-url>
 ```
+
+_New author email and username will be taken from your git config._
+
+### Advanced
+
+Pass author email you want to change and new author info
+
+```bash
+git-change-repo-author --backup --email=<example@example.com> --new-email=<example2@example.com> new-name=<username> <repo-url>
+```
+
+## Tips
+
+> You can pass repository urls as much as you want `<repo-url> <repo-url2> <repo-url3>` etc..
 
 ## Options
 
-| Option        | Description                                                                                    |
-| ------------- | ---------------------------------------------------------------------------------------------- |
-| `--email`     | Email you want to change<br /> **(Required)**                                                  |
-| `--new-email` | New email you want to use                                                                      |
-| `--new-name`  | New username you want to use                                                                   |
-| `--local`     | Changes repository locally                                                                     |
-| `--backup`    | Creates an original repository backup in the current directory <br /> **Strongly recommended** |
+| Option        | Description                                                                                                                        |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `--email`     | Author email you want to change<br /> **(Required)**                                                                               |
+| `--new-email` | New author email you want to use.<br /> By default, this will be taken from `git config --global user.email` <br />_(Optional)_    |
+| `--new-name`  | New author username you want to use.<br /> By default, this will be taken from `git config --global user.name` <br /> _(Optional)_ |
+| `--local`     | Changes repository locally. <br /> _(Optional)_<br />                                                                              |
+| `--backup`    | Creates an original repository backup in the current directory. <br /> **(Strongly recommended)**                                  |
 
 ### How it works
 
