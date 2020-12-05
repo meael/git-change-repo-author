@@ -3,12 +3,12 @@
 const { execPromise } = require("./utils");
 const { logger } = require("./logger");
 const {
-  isLocal,
+  isPushForce,
   isBackup,
   oldEmail,
   newEmail,
   newName,
-  repositoriesUrls
+  repositoriesUrls,
 } = require("./parameters");
 
 const messages = require("./messages");
@@ -18,20 +18,24 @@ const isNewUserInfoPassed = newName && newEmail;
 
 (async () => {
   // get new commit author info from git settings
-  const name = isNewUserInfoPassed ? newName : await execPromise(commands.runGitUserName());
-  const email = isNewUserInfoPassed ? newEmail : await execPromise(commands.runGitUserEmail());
+  const name = isNewUserInfoPassed
+    ? newName
+    : await execPromise(commands.runGitUserName());
+  const email = isNewUserInfoPassed
+    ? newEmail
+    : await execPromise(commands.runGitUserEmail());
   if (!isNewUserInfoPassed) {
     logger.yellow(messages.showGitConfig());
   }
 
   // show passed repositoriesUrls info
   logger.default(messages.showRepositories(repositoriesUrls.length));
-  repositoriesUrls.forEach(repositoryLink => {
+  repositoriesUrls.forEach((repositoryLink) => {
     logger.link(repositoryLink);
   });
 
   // handle all passed repos
-  repositoriesUrls.forEach(async repositoryLink => {
+  repositoriesUrls.forEach(async (repositoryLink) => {
     const repositoryLinkSplit = repositoryLink.split("/");
     const repositoryName = repositoryLinkSplit[repositoryLinkSplit.length - 1];
     const repositoryPath = `./${repositoryName}`;
@@ -45,17 +49,23 @@ const isNewUserInfoPassed = newName && newEmail;
 
     if (isBackup) {
       await execPromise(
-        commands.runCopyFolder(repositoryPath, `./${repositoryName + "[backup]/"}`)
+        commands.runCopyFolder(
+          repositoryPath,
+          `./${repositoryName + "[backup]/"}`
+        )
       );
     }
 
     logger[isBackup ? "successIcon" : "errorIcon"]("backup created");
 
     // change local repository author
-    await execPromise(commands.runChangeAuthor(oldEmail, email, name), repositoryPath);
+    await execPromise(
+      commands.runChangeAuthor(oldEmail, email, name),
+      repositoryPath
+    );
     logger.successIcon(messages.showAuthorChanged());
 
-    if (!isLocal) {
+    if (isPushForce) {
       // push local to remote repository
       await execPromise(commands.runGitPush(), repositoryPath);
 
@@ -63,7 +73,7 @@ const isNewUserInfoPassed = newName && newEmail;
       await execPromise(commands.runRemoveRepo(repositoryName));
     }
 
-    logger[isLocal ? "errorIcon" : "successIcon"](messages.showPushed());
+    logger[isPushForce ? "successIcon" : "errorIcon"](messages.showPushed());
 
     // show complete message
     logger.green(messages.showComplete());

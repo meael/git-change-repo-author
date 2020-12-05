@@ -1,6 +1,6 @@
 {
   "name": "git-change-repo-author",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Change commits author in git repository",
   "main": "index.js",
   "scripts": {
