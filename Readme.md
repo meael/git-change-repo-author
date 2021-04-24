@@ -42,10 +42,9 @@ git-change-repo-author --backup --email=<example@example.com> --new-email=<examp
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `--email`      | Author email you want to change<br /> **(Required)**                                                                               |
 | `--new-email`  | New author email you want to use.<br /> By default, this will be taken from `git config --global user.email` <br />_(Optional)_    |
-| `--new-name`   | New author username you want to use.<br /> By default, this will be taken from `git config --global user.name` <br /> _(Optional)_ |
-| `--local`      | Changes repository locally. <br /> _(Optional)_<br />                                                                              |
-| `--backup`     | Creates an original repository backup in the current directory. <br /> **(Strongly recommended)**                                  |
-| `--push-force` | Force push to repository and remove local copy <br /> _(Optional)_                                                                 |
+| `--new-name`   | New author username you want to use.<br /> By default, this will be taken from `git config --global user.name` <br /> _(Optional)_ |                                                                       
+| `--backup`     | Creates an original repository backup in the current directory. <br /> _(Optional)_                                   |
+| `--push-force` | Force push to repository😎 and remove local copy <br /> _(Optional)_                                                                 |
 
 ### How it works
 
